@@ -255,7 +255,7 @@ handleClick3() {
                 <button onClick={(e) => this.handleClick2(e)} className={this.state.con2 ? "active-link" : "b"}>DELIVERY</button>
               </li>
               <li id="item3" className="page-collection">
-                <button onClick={(e) => this.handleClick3(e)} className={this.state.con3 ? "active-link" : "b"}>HOME</button>
+                <button onClick={(e) => this.handleClick3(e)} className={this.state.con3 ? "active-link" : "b"}>REVIEW</button>
               </li>
             </ul>
           </nav>

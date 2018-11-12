@@ -17,12 +17,12 @@ class About extends Component {
 <p className="sum">
               Feel free to get in touch!
               </p>
-              <footer>
+              <div>
                             E-mail: 
                             <a href="mailto:NevehAllon@gmail.com">
                             NevehAllon@gmail.com
                             </a>
-              </footer>
+              </div>
             </div>
         )
     }

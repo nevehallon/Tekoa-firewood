@@ -15,20 +15,26 @@ import axios from 'axios';
 
 const delivery = ({ handle }) => {
   
- handle = (state) => {
-  let ctrlq;
-  const form = document.forms['contact'];
-  var scriptURL = 'https://script.google.com/macros/s/AKfycbxKVMYwv0lXojEyNqI_1vHJw9I1u2GuzjltE1a7qg/exec'; 
+ handle = (props) => {
+   let ctrlq;
+  var scriptURL = 'https://script.google.com/macros/s/AKfycbzHIERoV7mvZR0gq-16iEh6A4xnzXseLVSIV8VoLf4n7KqPS21Z/exec'; 
   var id1 = $("#number").val();
   var name = $("#firstName").val();
   var name2 = $("#lastName").val();
   var email = $("#email").val();
-  var size = $("#size selected").val();
-  var isAgreed = $("#isAgreed").val();
+  var size = (props.size);
+  var quantity = (props.quantity);
+  var size2 = (props.size2);
+  var quantity2 = (props.quantity2);
+  var size3 = (props.size3);
+  var quantity3 = (props.quantity3);
+  var size4 = (props.size4);
+  var quantity4 = (props.quantity4);
+  var isAgreed = $(".checked").text();
   var address = $("#address").val();
-  var price = 0;
-  var quantity = $("#quantity selected").val();
-  console.log(id1,
+  var price = (quantity) + (quantity2) + (quantity3) + (quantity4);
+  console.log(
+    id1,
     name,
     name2,
     email,
@@ -36,8 +42,14 @@ const delivery = ({ handle }) => {
     isAgreed,
     address,
     price,
-    quantity);
-  var url = scriptURL + "?callback=ctrlq&firstname=" + name + "&lastname=" + name2 + "&address=" + address + "&number=" + id1 + "&email=" + email + "&size=" + size + "&quantity=" + quantity + "&isagreed=" + isAgreed + "&price=" + price + "&action=insert";
+    quantity,
+    size2,
+    quantity2,
+    size3,
+    quantity3,
+    size4,
+    quantity4);
+  var url = scriptURL + "?callback=ctrlq&firstname=" + name + "&lastname=" + name2 + "&address=" + address + "&number=" + id1 + "&email=" + email + "&size=" + size + "&quantity=" + quantity + "&size2=" + size2 + "&quantity2=" + quantity2 + "&size3=" + size3 + "&quantity3=" + quantity3 + "&size4=" + size4 + "&quantity4=" + quantity4 + "&isagreed=" + isAgreed + "&price=" + price + "&action=insert";
 
 
   window.event.preventDefault(); 

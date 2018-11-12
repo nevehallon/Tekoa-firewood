@@ -1,0 +1,26 @@
+{
+  "118|gulp>vinyl-fs>glob-stream>glob>minimatch": {
+    "fix": 1
+  },
+  "118|gulp>vinyl-fs>glob-stream>minimatch": {
+    "fix": 1
+  },
+  "118|gulp>vinyl-fs>glob-watcher>gaze>globule>glob>minimatch": {
+    "fix": 1
+  },
+  "118|gulp>vinyl-fs>glob-watcher>gaze>globule>minimatch": {
+    "fix": 1
+  },
+  "577|gulp>vinyl-fs>glob-watcher>gaze>globule>lodash": {
+    "fix": 1
+  },
+  "725|react-scripts>webpack-dev-server": {
+    "fix": 1
+  },
+  "722|react-scripts>jest>jest-cli>jest-haste-map>sane>exec-sh>merge": {
+    "fix": 1
+  },
+  "722|react-scripts>jest>jest-cli>jest-runtime>jest-haste-map>sane>exec-sh>merge": {
+    "fix": 1
+  }
+}
