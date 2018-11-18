@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */ 
 import React, { Component } from 'react';
-import WorkPortfolio from './WorkPortfolio';
+import { connect } from "react-redux";
+import Reviews from './Reviews';
 import Delivery from './Delivery';
 import About from './About';
 import './App.css';
@@ -13,6 +14,7 @@ import fire3 from './images/fire3.jpg';
 import fire4 from './images/fire4.jpg';
 import fire5 from './images/fire5.jpg';
 import './styles.global.scss';
+import { Message } from "semantic-ui-react";
 
 class App extends Component {
 
@@ -255,7 +257,7 @@ handleClick3() {
                 <button onClick={(e) => this.handleClick2(e)} className={this.state.con2 ? "active-link" : "b"}>DELIVERY</button>
               </li>
               <li id="item3" className="page-collection">
-                <button onClick={(e) => this.handleClick3(e)} className={this.state.con3 ? "active-link" : "b"}>REVIEW</button>
+                <button onClick={(e) => this.handleClick3(e)} className={this.state.con3 ? "active-link" : "b"}>REVIEWS</button>
               </li>
             </ul>
           </nav>
@@ -268,7 +270,11 @@ handleClick3() {
               <Delivery/> 
             </div>
             <div className={this.state.con3 ? 'ON' : 'OFF'}>
-              <WorkPortfolio className="work-collection"/>              
+              <Reviews onSubmit={() => console.log("ProfileForm was submitted")}/>              
+              <Message>
+                <Message.Header>Form data:</Message.Header>
+                <pre>{JSON.stringify(this.props, null, 2)}</pre>
+              </Message>
             </div> 
           </section>
         </div>
@@ -281,4 +287,13 @@ handleClick3() {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return state.form.profile
+    ? {
+        values: state.form.reviews.values,
+        submitSucceeded: state.form.reviews.submitSucceeded
+      }
+    : {};
+};
+
+export default connect(mapStateToProps)(App);
