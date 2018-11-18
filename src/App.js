@@ -270,11 +270,7 @@ handleClick3() {
               <Delivery/> 
             </div>
             <div className={this.state.con3 ? 'ON' : 'OFF'}>
-              <Reviews onSubmit={() => console.log("ProfileForm was submitted")}/>              
-              <Message>
-                <Message.Header>Form data:</Message.Header>
-                <pre>{JSON.stringify(this.props, null, 2)}</pre>
-              </Message>
+              <Reviews/>    
             </div> 
           </section>
         </div>

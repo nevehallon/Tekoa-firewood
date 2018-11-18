@@ -1274,3 +1274,35 @@ body, html{
   grid-template-columns: 1fr 1fr 1fr 1fr;
   font-size: 22px;
 }
+
+.com-grp {
+  display: grid;
+  max-width: unset !important;
+  grid-gap: 5px;
+  align-items: center;
+  text-align: left !important;
+}
+
+.ui .container .sum {
+  display: grid;
+  grid-template: 1fr / 1fr;
+}
+
+.comment {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  grid-gap: 10px;
+}
+
+.form {
+  display: grid;
+  grid-template-rows: auto 55px;
+}
+
+.ui .button {
+  top: unset;
+  left: unset;
+  height: unset;
+  align-self: flex-start;
+  justify-self: start;
+}

@@ -1,107 +1,69 @@
-import React, { Fragment } from "react";
-import { Field, reduxForm } from "redux-form";
-import { Form, Message } from "semantic-ui-react";
+import React, { Component } from 'react';
+import { Button, Comment, Form, Container, Rating } from 'semantic-ui-react';
 
-const renderCheckbox = field => (
-  <Form.Checkbox
-    checked={!!field.input.value}
-    name={field.input.name}
-    label={field.label}
-    onChange={(e, { checked }) => field.input.onChange(checked)}
-  />
-);
+class Reviews extends Component (
 
-const renderRadio = field => (
-  <Form.Radio
-    checked={field.input.value === field.radioValue}
-    label={field.label}
-    name={field.input.name}
-    onChange={(e, { checked }) => field.input.onChange(field.radioValue)}
-  />
-);
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
 
-const renderSelect = field => (
-  <Form.Select
-    label={field.label}
-    name={field.input.name}
-    onChange={(e, { value }) => field.input.onChange(value)}
-    options={field.options}
-    placeholder={field.placeholder}
-    value={field.input.value}
-  />
-);
+  let handleRate = (e, { rating, maxRating }) => this.setState({ rating, maxRating });
 
-const renderTextArea = field => (
-  <Form.TextArea
-    {...field.input}
-    label={field.label}
-    placeholder={field.placeholder}
-  />
-);
 
-const Reviews = props => {
-  const { handleSubmit, reset } = props;
+  render() {
+    return (
+        <Container className="sum">   
+              <Comment.Group className="com-grp">
+              <Comment>
+                <Comment.Avatar as='a' src='/images/avatar/small/joe.jpg' />
+                <Comment.Content>
+                  <Comment.Author>Joe Henderson</Comment.Author>
+                  <Comment.Metadata>
+                    <div>1 day ago</div>
+                  </Comment.Metadata>
+                  <Comment.Text>
+                    
+                    <div>
+                      <Rating icon='star' defaultRating={3} maxRating={5} />
+                    </div>
+                    <p>
+                      Preserve until your next run, when the watch lets you see how Impermanent your efforts
+                      are.
+                    </p>
+                  </Comment.Text>
+                  <Comment.Actions>
+                    <Comment.Action>Reply</Comment.Action>
+                  </Comment.Actions>
+                </Comment.Content>
+              </Comment>
 
-  return (
-    <Fragment>
-      <Message info>
-        <p>
-          You will don't need any special mappings for <code>Form.Input</code>,
-          because it passed events from native inputs.
-        </p>
+              <Comment>
+                <Comment.Avatar as='a' src='/images/avatar/small/christian.jpg' />
+                <Comment.Content>
+                  <Comment.Author>Christian Rocha</Comment.Author>
+                  <Comment.Metadata>
+                    <div>2 days ago</div>
+                  </Comment.Metadata>
+                  <Comment.Text>I re-tweeted this.</Comment.Text>
+                  <Comment.Actions>
+                    <Comment.Action>Reply</Comment.Action>
+                  </Comment.Actions>
+                </Comment.Content>
+              </Comment>
 
-        <p>
-          The situation with other components is more complicated, because the{" "}
-          <code>Field</code> relies on the native events. However, it can be
-          easily with{" "}
-          <a
-            href="https://redux-form.com/7.4.2/docs/api/field.md/#2-a-stateless-function"
-            target="_blank"
-          >
-            stateless function
-          </a>. We recomend to wrap them with generic components to reduce forms
-          complexivity.
-        </p>
-      </Message>
+              <Form reply>
+                <Form.TextArea />
+                <div>
+                  <Rating maxRating={5} onRate={this.handleRate} />
+                  <pre>{JSON.stringify(this.state, null, 2)}</pre>
+                </div>
+                <Button content='Add Comment' labelPosition='left' icon='edit' primary />
+              </Form>
+            </Comment.Group>
+            </Container>
+    )
+  }
+}
 
-      <Form onSubmit={handleSubmit}>
-        <Form.Group widths="equal">
-          <Field
-            component={Form.Input}
-            label="First name"
-            name="firstName"
-            placeholder="First name"
-          />
-          <Field
-            component={Form.Input}
-            label="Last name"
-            name="lastName"
-            placeholder="Last name"
-          />
-        </Form.Group>
-
-        <Field
-          component={renderTextArea}
-          label="review"
-          name="review"
-          placeholder="Leave your review here..."
-        />
-
-        <Field
-          component={renderCheckbox}
-          label="I agree to the Terms and Conditions"
-          name="isAgreed"
-        />
-
-        <Form.Group inline>
-          <Form.Button primary>Submit</Form.Button>
-          <Form.Button onClick={reset}>Reset</Form.Button>
-        </Form.Group>
-      </Form>
-    </Fragment>
-  );
-};
-
-export default reduxForm({
-  form: "reviews"
-})(Reviews);
+export default Reviews;
